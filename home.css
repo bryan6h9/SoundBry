@@ -1,0 +1,65 @@
+/* Importa la fuente */
+@font-face {
+    font-family: 'SFProDisplay';
+    src: url('./fonts/SFProDisplay-Heavy.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+
+
+/* Estilo para el header */
+header {
+    text-align: center;
+    padding: 1px;
+    background-color: #000000;
+    margin-bottom: 20px;
+    font-family: 'SFProDisplay', sans-serif;
+}
+
+header h1 {
+    font-size: 26px;
+    color: yellow;
+    font-family: 'SFProDisplay', sans-serif;
+}
+
+header p {
+    font-size: 18px;
+    color: #777;
+}
+
+/* Estilo para el contenedor de clima */
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.weather-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+
+
+  
+
+/* Estilo para el botón de cierre de sesión */
+.logout-btn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.logout-btn:hover {
+    background-color: #c0392b;
+}

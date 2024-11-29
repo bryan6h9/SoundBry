@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Audífonos - Comprar Audífonos Premium</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        @font-face { font-family: 'Sharpy'; src: url('fonts/Sharpy.otf') format('opentype'); font-weight: normal; font-style: normal; }
+        @font-face { font-family: 'SFProDisplay'; src: url('SFProDisplay-Heavy.ttf') format('truetype'); font-weight: bold; }
+
+        .custom-font {
+            font-family: 'Sharpy', sans-serif;
+            font-size: 21px;
+            color: white;
+            letter-spacing: 2px;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-align: center;
+    }
+
+        
+/* Estilos del clima */
+
+nav {
+    background-color: yellow;
+    padding: 13.3px 10px; /* Ajusta el espaciado para alargar la barra verticalmente */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'SFProDisplay', sans-serif;
+    font-size: 1.5rem;
+    width: 100%; /* Extiende la barra al ancho completo */
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+  }
+
+  nav a {
+    color: black;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  nav a:hover {
+    color: orange;
+  }
+
+
+  /* Estilo para el recuadro del clima */
+    .weather-container {
+        display: none;
+        background-color: transparent;
+        padding: 8px;  
+        border-radius: 5px;
+        width: 80%;
+        max-width: 450px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-45%, -30%);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        z-index: 999;
+        text-align: center;
+        width: 30%;  /* Ajusta este valor para hacerlo más angosto */
+    }
+
+      .weather-container.active {
+        display: block;
+      }
+
+      /* Fondo semitransparente */
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 998;
+        
+    }
+
+      /* Estilo para la información del clima */
+      .weather-info {
+        text-align: center;
+        transform: translateX(50px);
+        background-image: url('/images/montaña.jpg');
+        background-size: cover;
+        background-position: center;
+        padding: 35px;
+        border-radius: 10px;
+        width: 230px;
+        font-family: 'SFProDisplay', sans-serif;
+        color: #fff; /* Ajusta el color del texto si es necesario */
+        font-size: 1.5rem;
+      }
+
+
+
+
+
+  /* Barra de navegación superior *//* Barra de navegación superior *//* Barra de navegación superior *//* Barra de navegación superior */
+      
+
+        body {
+            font-family: 'SFProDisplay', Arial, sans-serif;
+            background-color: rgb(0, 0, 0);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-image: url('amarillofondo.jpg');
+            font-size: 22px;
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 0.2px 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(255, 255, 255, 0.2);
+        }
+
+        
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+        }
+
+        .product {
+            background-color: white;
+            border-radius: 25px; /* Más redondeado */
+            box-shadow: 0 8px 28px yellow; /* Sombreado más suave */
+            padding: 12px;
+            margin: 1px; /* Contenedores más juntos */
+            flex: 0 1 calc(30% - 20px); /* Más estrechos */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            max-width: 200px; /* Contenedores más pequeños */
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Sombra al hacer hover */
+        }
+
+        .product img {
+            max-width: 160px; /* Imagen más pequeña */
+            border-radius: 12px;
+            margin-bottom: 10px;
+        }
+
+        .product-title {
+            font-size: 18px;
+            margin: 0 0 10px;
+            color: black;
+            font-weight: bold;
+        }
+
+        .product-price {
+            font-size: 16px;
+            color: black;
+            margin: 0 0 15px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+        }
+         /* Encapsulado para la barra de navegación */
+    nav.custom-navbar {
+        width: 100%;
+        max-width: 1200px; /* Limita el ancho máximo */
+        background-color: #000000; /* Fondo negro */
+        padding: 10px; /* Espaciado interno */
+        border-radius: 10px; /* Bordes redondeados */
+        margin: 0 auto; /* Centra la barra */
+    }
+
+    /* Lista de la barra de navegación */
+    .navbar-list {
+        list-style: none; /* Sin puntos en la lista */
+        margin: 0;
+        padding: 0;
+        display: flex; /* Alinear elementos en fila */
+        justify-content: space-evenly; /* Menor separación entre elementos */
+        align-items: center; /* Centrar verticalmente */
+    }
+
+    /* Elementos individuales de la barra */
+    .navbar-item {
+        margin: 0 5px; /* Espaciado horizontal reducido */
+    }
+
+    /* Estilos para los enlaces */
+    .navbar-link {
+        text-decoration: none; /* Sin subrayado */
+        color: white; /* Color del texto */
+        font-size: 16px; /* Tamaño del texto */
+        font-weight: bold; /* Texto en negrita */
+        padding: 8px 15px; /* Espaciado interno de los botones */
+        border: 2px solid #f2ff00; /* Borde amarillo */
+        border-radius: 19px; /* Bordes redondeados */
+        transition: all 0.3s ease; /* Transición para animaciones */
+    }
+
+    /* Efecto hover en los enlaces */
+    .navbar-link:hover {
+        color: #f2ff00; /* Texto amarillo */
+        background-color: rgb(0, 0, 0); /* Fondo transparente */
+        box-shadow: 0px 0px 10px rgba(255, 255, 0, 0.8); /* Sombra amarilla */
+        transform: scale(1.1); /* Aumenta el tamaño ligeramente */
+    }
+
+    /* Animaciones iniciales */
+    .navbar-item {
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    /* Definición de la animación */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Responsividad */
+    @media (max-width: 768px) {
+        .navbar-list {
+            flex-direction: column; /* Apilar elementos verticalmente en pantallas pequeñas */
+            align-items: flex-start; /* Alinear al principio */
+        }
+
+        .navbar-item {
+            margin: 8px 0; /* Separación vertical entre elementos */
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="home.html">Inicio</a>
+        <a href="search.html">Búsqueda</a>
+        
+        <a href="about.html">Acerca de</a>
+        <a href="javascript:void(0);" class="logout-link" onclick="logout()">Cerrar sesión</a>
+        <a href="javascript:void(0);" class="logout-link" onclick="toggleWeather()">Ver Clima</a>
+      </nav>
+    <header>
+        <h1>¿Que desea llevar hoy?</h1>
+        
+        
+
+        
+    </header>
+     
+
+    <div class="container">
+        <!-- Producto 1 -->
+        <div class="product">
+            <img src="xm5 2.png" alt="Audífonos Sony WF-1000XM5">
+            <h2 class="product-title">Sony WF-1000XM5</h2>
+            <p class="product-price">$290.00 US</p>
+            <!-- Botón de PayPal -->
+            <div id="paypal-button-container-1"></div>
+        </div>
+
+        <!-- Producto 2 -->
+        <div class="product">
+            <img src="galaxybuds2pro.png" alt="Galaxy Buds 2 Pro">
+            <h2 class="product-title">Galaxy Buds 2 Pro</h2>
+            <p class="product-price">$200.00 US</p>
+            <!-- Botón de PayPal -->
+            <div id="paypal-button-container-2"></div>
+        </div>
+
+        <!-- Producto 3 -->
+        <div class="product">
+            <img src="airpod2pro.png" alt="AirPods Pro">
+            <h2 class="product-title">AirPods Pro</h2>
+            <p class="product-price">$220.00 US</p>
+            <!-- Botón de PayPal -->
+            <div id="paypal-button-container-3"></div>
+        </div>
+
+        <!-- Producto 4 -->
+        <div class="product">
+            <img src="senheiser mm4.png" alt="AirPods Pro">
+            <h2 class="product-title">AirPods Pro</h2>
+            <p class="product-price">$320.00 US</p>
+            <!-- Botón de PayPal -->
+            <div id="paypal-button-container-4"></div>
+        </div>
+
+    </div>
+
+
+    <!-- Cargar el SDK de PayPal con tu Client ID -->
+    <script src="https://www.paypal.com/sdk/js?client-id=Aaswf6EUR4wHiCPTnHHHdmBvRRExF4GlSjdoOeVC05LzYnNyiISLyDl-z60VTSRin-CLpY-_udZ7ZLaL&currency=USD"></script>
+    <script>
+        // Agregar botones de PayPal para cada producto
+        paypal.Buttons({
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: '290.00' // Precio de Sony WF-1000XM5
+                        }
+                    }]
+                });
+            },
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    alert('Pago exitoso de ' + details.payer.name.given_name);
+                });
+            }
+        }).render('#paypal-button-container-1');
+
+        paypal.Buttons({
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: '200.00' // Precio de Galaxy Buds 2 Pro
+                        }
+                    }]
+                });
+            },
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    alert('Pago exitoso de ' + details.payer.name.given_name);
+                });
+            }
+        }).render('#paypal-button-container-2');
+
+        paypal.Buttons({
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: '220.00' // Precio de AirPods Pro
+                        }
+                    }]
+                });
+            },
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    alert('Pago exitoso de ' + details.payer.name.given_name);
+                });
+            }
+        }).render('#paypal-button-container-3');
+
+
+
+        paypal.Buttons({
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: '320.00' // Precio de Sony WF-1000XM5
+                        }
+                    }]
+                });
+            },
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    alert('Pago exitoso de ' + details.payer.name.given_name);
+                });
+            }
+        }).render('#paypal-button-container-4');
+
+        
+
+        
+    </script>
+    <main>
+
+        <!-- Recuaadro del clima (oculto por defecto) --><!-- Recuaadro del clima (oculto por defecto) --><!-- Recuaadro del clima (oculto por defecto) --><!-- Recuaadro del clima (oculto por defecto) -->
+      <div id="weather-container" class="weather-container">
+
+      
+        <div id="weather" class="weather-info">
+          <p id="temperature"></p>
+          <p id="weather-description"></p>
+          <p id="humidity"></p>
+        </div>
+      </div>
+          </div>
+          </main>   
+          <!-- Fondo semitransparente (oculto por defecto) -->
+      <div id="overlay" class="overlay" onclick="closeWeather()"></div>
+
+      <!-- Recuaadro del clima (oculto por defecto) -->
+      <div id="weather-container" class="weather-container">
+      
+        <div id="weather" class="weather-info">
+          <p id="temperature"></p>
+          <p id="weather-description"></p>
+          <p id="humidity"></p>
+        </div>
+      </div>
+
+      
+    </main>
+
+
+
+
+
+    
+    <script>
+      function logout() {
+        fetch('/logout', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(response => {
+          if (response.ok) {
+            window.location.href = 'login.html';
+          } else {
+            alert('Hubo un error al cerrar la sesión');
+          }
+        });
+      }
+
+      function toggleWeather() {
+        const weatherContainer = document.getElementById('weather-container');
+        const overlay = document.getElementById('overlay');
+        
+        // Abrir o cerrar el recuadro de clima
+        weatherContainer.classList.toggle('active');
+        overlay.classList.toggle('active');
+        
+        if (weatherContainer.classList.contains('active')) {
+          requestLocation();
+        }
+      }
+
+      function closeWeather() {
+        const weatherContainer = document.getElementById('weather-container');
+        const overlay = document.getElementById('overlay');
+        
+        weatherContainer.classList.remove('active');
+        overlay.classList.remove('active');
+      }
+
+      function requestLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition, showError);
+        } else {
+          alert("Geolocalización no soportada por este navegador.");
+        }
+      }
+
+      function showPosition(position) {
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+        getWeather(lat, lon);
+      }
+
+      function showError(error) {
+        alert("No se pudo obtener la ubicación. Usaremos una ubicación predeterminada.");
+        getWeather(31.73, -106.48); // Ciudad Juárez
+      }
+
+      function getWeather(lat, lon) {
+        const apiKey = 'f9cea72b1a2f5c523690543b4c201e2b';
+        const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&lang=es`;
+
+        fetch(url)
+          .then(response => response.json())
+          .then(data => {
+            document.getElementById('weather').style.display = 'block';
+            document.getElementById('temperature').textContent = `Temperatura: ${data.main.temp}°C`;
+            document.getElementById('weather-description').textContent = `Descripción: ${data.weather[0].description}`;
+            document.getElementById('humidity').textContent = `Humedad: ${data.main.humidity}%`;
+          })
+          .catch(err => alert("Error al obtener el clima: " + err));
+      }
+    </script>
+
+</body>
+</html>

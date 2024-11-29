@@ -1,0 +1,285 @@
+/* Importa la fuente */
+@font-face {
+    font-family: 'SFProDisplay';
+    src: url('./fonts/SFProDisplay-Heavy.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Aplica la fuente a toda la página */
+body {
+    margin: 0;
+    font-family: 'SFProDisplay', sans-serif;
+    background-color: #000; /* Fondo negro */
+    color: #fff; /* Texto blanco */
+}
+
+body {
+    
+    background-size: cover; /* Asegura que la imagen cubra toda la pantalla */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-attachment: fixed; /* Fija la imagen al fondo al hacer scroll */
+    background-position: center; /* Centra la imagen */
+    color: #fff; /* Ajusta el color del texto si es necesario */
+}
+  
+
+
+
+.audio-text {
+    position: absolute; /* Permite posicionar el elemento en cualquier lugar */
+    top: 30%; /* Lo posiciona verticalmente en el centro */
+    right: 10px; /* Lo aleja 10px del borde derecho */
+    transform: translateY(-89%); /* Ajusta el elemento para que esté perfectamente centrado en el eje vertical */
+    transform: translateX(-25%); /* Ajusta el elemento para que esté perfectamente centrado en el eje vertical */
+    font-size: 29px; /* Ajusta el tamaño de la fuente según lo necesites */
+    color: #e5ff00; /* Cambia el color del texto si lo deseas */
+    font-family: 'SFProDisplay', sans-serif; /* Usa la fuente que prefieras */
+    text-align: center; /* Centra los párrafos horizontalmente */
+    line-height: 0.2; /* Ajusta el interlineado (espacio entre líneas) */
+}
+
+.audio-container {
+    display: flex; /* Habilita el uso de Flexbox */
+    align-items: center; /* Alinea verticalmente el contenido si es necesario */
+    justify-content: flex-start; /* Alinea los elementos a la izquierda */
+}
+
+.audio-image {
+    position: absolute;
+    left: 0; /* La coloca a la izquierda */
+    top: 50%; /* La centra verticalmente dentro del contenedor */
+    transform: translateY(-43%) translateX(68%); /* Mueve la imagen hacia arriba y un poco hacia la derecha */
+    max-width: 450px;
+    height: auto;
+}
+
+
+
+
+
+.auth-links {
+    display: flex; /* Habilita Flexbox */
+    flex-direction: column; /* Coloca los botones uno debajo del otro */
+    align-items: flex-end; /* Alinea los botones al lado derecho */
+    gap: 0px; /* Espaciado vertical entre los botones */
+    padding-right: 170px; /* Ajusta este valor para mover los botones hacia la izquierda */
+}
+
+.auth-links a {
+    text-decoration: none; /* Elimina subrayado */
+    padding: 10px 20px; /* Tamaño uniforme */
+    border-radius: 15px; /* Bordes redondeados */
+    font-family: 'SFProDisplay', sans-serif; /* Fuente personalizada */
+    display: inline-block;
+    text-align: center; /* Centra el texto */
+    width: 200px; /* Ancho fijo para ambos botones */
+    transition: transform 0.4s ease, background-color 0.9s ease; /* Suavidad en efectos */
+    box-sizing: 20 border-box; /* Incluye padding en el tamaño total */
+    margin-bottom: -105px; /* Reduce el espacio entre los botones */
+}
+
+/* Efecto al pasar el cursor */
+.auth-links a:hover {
+    transform: scale(1.1); /* Aumenta el tamaño un 10% */
+}
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+/* Estilo Global */
+body {
+    margin: 0;
+    font-family: 'SFProDisplay', sans-serif;
+    background-color: #000; /* Fondo negro */
+    color: #fff; /* Texto blanco */
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  /* Barra de Navegación */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.1px 20px; /* Padding reducido */
+    background-color: #111; /* Fondo oscuro */
+  }
+  
+  .logo h1 {
+    font-size: 1.5rem;
+    color: #fff;
+  }
+  
+
+  
+/* Sección de Introducción */
+.intro-section h1 {
+    text-align: center;
+    font-size: 80px;
+    margin-top: 0px; /* Ajusta el espacio superior */
+    margin-bottom: 10px;
+    border-bottom: none; /* Línea eliminada */
+    color: #e5ff00; /* Rojo elegante */
+    animation: pulse 0.5s infinite; /* Animación de pulsación */
+  }
+
+  /* Estilo aplicado al nuevo título */
+.intro-section h1 {
+    
+    text-shadow: 0 0 10px #e50914, 0 0 20px #e50914, 0 0 30px #e50914, 0 0 40px #ff4b5c, 0 0 70px #ff4b5c, 0 0 80px #ff4b5c; /* Efecto de brillo */
+  }
+  
+  /* Animación de pulsación */
+  @keyframes pulse {
+    0%, 100% {
+      text-shadow: 0 0 10px #e50914, 0 0 20px #e50914, 0 0 30px #e50914, 0 0 40px #ff4b5c, 0 0 70px #ff4b5c, 0 0 80px #ff4b5c;
+    }
+    50% {
+      text-shadow: 0 0 20px #e50914, 0 0 30px #ff4b5c, 0 0 50px #ff4b5c, 0 0 70px #ff4b5c, 0 0 100px #ff4b5c;
+    }
+  }
+
+    
+  
+
+
+
+  
+  .intro-section p {
+    font-size: 1.2rem;
+    color: #ccc;
+  }
+  
+  /* Features Section */
+  .features-section {
+    padding: 0px 20px; /* Ajustado para mejor visualización */
+    background-color: transparent;
+  }
+  
+  .features-section h2 {
+    text-align: center;
+    font-size: 1.7rem;
+    margin-bottom: 20px;
+  }
+  
+  .features-container {
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+    flex-wrap: wrap;
+  }
+  
+  .feature {
+    background-color: #000000;
+    padding: 15px;
+    border-radius: 30px;
+    text-align: center;
+    max-width: 230px;
+    color: #fff;
+    box-shadow: 0 5px 20px rgb(255, 217, 0);
+  }
+  
+  .feature img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .feature h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .feature p {
+    font-size: 1rem;
+    color: #ccc;
+  }
+  
+  /* Botones */
+  .btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+  
+  .btn.primary-btn {
+    background-color: #fbff00;
+    color: #000000;
+    border: 2px solid transparent;
+  }
+  
+  .btn.primary-btn:hover {
+    background-color: transparent;
+    border-color: #e1ff00;
+    color: #ffffff;
+  }
+  
+  .btn.secondary-btn {
+    background-color: transparent;
+    color: #ffffff;
+    border: 2px solid #e1ff00;
+  }
+  
+  .btn.secondary-btn:hover {
+    background-color: #e1ff00;
+    color: #000000;
+  }
+  
+  /* Footer */
+  footer {
+    padding: 20px;
+    text-align: center;
+    background-color: #111;
+    color: #bbb;
+  }
+  
+  footer p {
+    font-size: 1rem;
+  }
+  
+  footer .highlight {
+    color: #ffd700; /* Amarillo para destacar */
+    font-weight: bold;
+  }
+  
+  footer nav a {
+    margin: 0 10px;
+    color: #bbb;
+    font-size: 0.9rem;
+  }
+  
+  footer nav a:hover {
+    color: #fff;
+  }
+  
+  /* Responsivo */
+  @media (max-width: 768px) {
+    .features-container {
+      flex-direction: column;
+      gap: 20px;
+    }
+  
+    .auth-links {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+  

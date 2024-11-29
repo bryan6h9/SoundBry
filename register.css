@@ -1,0 +1,147 @@
+/* Importa la fuente */
+@font-face {
+    font-family: 'SFProDisplay';
+    src: url('./fonts/SFProDisplay-Heavy.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Estilo Global */
+body {
+    margin: 0;
+    font-family: 'SFProDisplay', sans-serif;
+    background-color: #000; /* Fondo negro */
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+ }
+
+/* Título */
+.login-box h1 {
+    font-size: 55px;
+    font-weight: bold;
+    color: #e5ff00; /* Amarillo brillante */
+    margin-bottom: 20px;
+    animation: pulse 2s infinite; /* Efecto de pulsación */
+}
+
+
+
+  
+  /* Contenedor de registro */
+  .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .login-box {
+    background-color: rgba(0, 0, 0, 0.8); /* Caja semi-transparente */
+    border-radius: 10px;
+    padding: 40px 30px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+  }
+  
+
+  
+  .login-box .input-group {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  
+  .login-box label {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: #aaa;
+  }
+  
+  .login-box input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #444;
+    border-radius: 5px;
+    background-color: #222;
+    color: #fff;
+  }
+  
+  .login-box input::placeholder {
+    color: #666;
+  }
+  
+  .login-box button {
+    width: 51%;
+    padding: 12px 20px;
+    font-size: 1rem;
+    border-radius: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+    background-color: #e5ff00;
+    color: black;
+    border: 2px solid #e5ff00;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'SFProDisplay', sans-serif; /* Fuente personalizada */
+  }
+  
+  .login-box button:hover {
+    background-color: transparent;
+    color: white;
+  }
+
+  /* Efecto al pasar el cursor */
+.login-box button:hover {
+    transform: scale(1.1); /* Aumenta el tamaño un 10% */
+}
+
+.return-link {
+    margin-top: -80px; /* Separa el botón inferior del superior */
+}
+
+
+.return-link {
+    display: inline-block; /* Asegura comportamiento de botón */
+    width: 40%; /* Ajusta el ancho al 40% del contenedor */
+    
+    padding: 12px 20px; /* Espaciado interno para el texto */
+    font-size: 1rem; /* Tamaño del texto */
+    border-radius: 15px; /* Bordes redondeados */
+    text-transform: uppercase; /* Convierte el texto a mayúsculas */
+    font-weight: bold; /* Negrita */
+    background-color: transparent; /* Fondo transparente */
+    color: white; /* Texto blanco */
+    border: 2px solid #e5ff00; /* Borde amarillo */
+    cursor: pointer; /* Cambia el cursor al pasar */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease; /* Transición suave */
+    text-decoration: none; /* Elimina subrayado */
+    font-family: 'SFProDisplay', sans-serif; /* Fuente personalizada */
+    text-align: center; /* Centra el texto dentro del botón */
+}
+
+.return-link:hover {
+    background-color: #e5ff00; /* Cambia el fondo a amarillo al pasar el mouse */
+    color: black; /* Cambia el texto a negro */
+    transform: scale(1.1); /* Escala el tamaño un 10% */
+}
+
+  
+
+
+
+  /* Animación de pulsación */
+@keyframes pulse {
+    0%, 100% {
+        text-shadow: 0 0 10px #e50914, 0 0 20px #e50914, 0 0 30px #e50914, 0 0 40px #ff4b5c, 0 0 70px #ff4b5c, 0 0 80px #ff4b5c;
+    }
+    50% {
+        text-shadow: 0 0 20px #e50914, 0 0 30px #ff4b5c, 0 0 50px #ff4b5c, 0 0 70px #ff4b5c, 0 0 100px #ff4b5c;
+    }
+}

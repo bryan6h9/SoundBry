@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nosotros - SoundBry</title>
+    <style>
+    
+    @font-face {
+    font-family: 'SFProDisplay';
+    src: url('./fonts/SFProDisplay-Heavy.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+        
+
+ /* Barra de navegación superior *//* Barra de navegación superior *//* Barra de navegación superior *//* Barra de navegación superior */
+ nav {
+    background-color: yellow;
+    padding: 13.3px 10px; /* Ajusta el espaciado para alargar la barra verticalmente */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'SFProDisplay', sans-serif;
+    font-size: 1.5rem;
+    width: 100%; /* Extiende la barra al ancho completo */
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+  }
+
+  nav a {
+    color: black;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  nav a:hover {
+    color: orange;
+  }
+
+
+  /* Estilo para el recuadro del clima */
+  .weather-container {
+        display: none;
+        background-color: transparent;
+        padding: 10px;  
+        border-radius: 5px;
+        width: 80%;
+        max-width: 450px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-45%, -30%);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        z-index: 999;
+        text-align: center;
+      }
+
+      .weather-container.active {
+        display: block;
+      }
+
+      /* Fondo semitransparente */
+      .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 998;
+        
+      }
+
+      /* Estilo para la información del clima */
+      .weather-info {
+        text-align: center;
+        transform: translateX(80px);
+        background-image: url('/images/montaña.jpg');
+        background-size: cover;
+        background-position: center;
+        padding: 35px;
+        border-radius: 10px;
+        width: 230px;
+        font-family: 'SFProDisplay', sans-serif;
+        color: #fff; /* Ajusta el color del texto si es necesario */
+        font-size: 1.5rem;
+    }
+
+
+        body {
+            font-family: 'SFProDisplay';
+            background-color: #000; /* Fondo negro */
+            color: #fff; /* Texto blanco */
+            margin: 0;
+            padding: 0;
+        }
+
+        @font-face {
+            font-family: 'SFProDisplay';
+            src: url('SFProDisplay-Heavy.ttf') format('truetype');
+        }
+
+        .logo-container {
+            text-align: center;
+            background-color: #000000; /* Fondo gris oscuro */
+            padding: 20px 0;
+        }
+
+        .logo-container img {
+            max-width: 300px;
+            height: auto;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            padding: 20px 0;
+            font-family: 'SFProDisplay', sans-serif;
+            background-color: #000000; /* Fondo gris oscuro */
+            margin: 0;
+            color: #ffd871; /* Texto blanco */
+        }
+
+        .content {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #000000; /* Fondo gris oscuro */
+            box-shadow: 0 8px 28px rgb(251, 255, 0);
+            border-radius: 8px;
+        }
+
+        .about-text {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #fff;
+            font-size: 28px;
+            border-bottom: 2px solid #fff; /* Línea decorativa */
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        
+        }   
+
+        /* Encapsulado para la barra de navegación */
+    nav.custom-navbar {
+        width: 100%;
+        max-width: 1200px; /* Limita el ancho máximo */
+        background-color: #000000; /* Fondo negro */
+        padding: 10px; /* Espaciado interno */
+        border-radius: 10px; /* Bordes redondeados */
+        margin: 0 auto; /* Centra la barra */
+    }
+
+    /* Lista de la barra de navegación */
+    .navbar-list {
+        list-style: none; /* Sin puntos en la lista */
+        margin: 0;
+        padding: 0;
+        display: flex; /* Alinear elementos en fila */
+        justify-content: space-evenly; /* Menor separación entre elementos */
+        align-items: center; /* Centrar verticalmente */
+    }
+
+    /* Elementos individuales de la barra */
+    .navbar-item {
+        margin: 0 5px; /* Espaciado horizontal reducido */
+    }
+
+    /* Estilos para los enlaces */
+    .navbar-link {
+        text-decoration: none; /* Sin subrayado */
+        color: white; /* Color del texto */
+        font-size: 16px; /* Tamaño del texto */
+        font-weight: bold; /* Texto en negrita */
+        padding: 8px 15px; /* Espaciado interno de los botones */
+        border: 2px solid #f2ff00; /* Borde amarillo */
+        border-radius: 19px; /* Bordes redondeados */
+        transition: all 0.3s ease; /* Transición para animaciones */
+    }
+
+    /* Efecto hover en los enlaces */
+    .navbar-link:hover {
+        color: #f2ff00; /* Texto amarillo */
+        background-color: rgb(0, 0, 0); /* Fondo transparente */
+        box-shadow: 0px 0px 10px rgba(255, 255, 0, 0.8); /* Sombra amarilla */
+        transform: scale(1.1); /* Aumenta el tamaño ligeramente */
+    }
+
+    /* Animaciones iniciales */
+    .navbar-item {
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    /* Definición de la animación */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Responsividad */
+    @media (max-width: 768px) {
+        .navbar-list {
+            flex-direction: column; /* Apilar elementos verticalmente en pantallas pequeñas */
+            align-items: flex-start; /* Alinear al principio */
+        }
+
+        .navbar-item {
+            margin: 8px 0; /* Separación vertical entre elementos */
+        }
+    }
+
+        /* Recuadro del clima */
+        .weather-box {
+            background-color: #000; /* Fondo negro */
+            background-image: url('montaña.jpg'); /* Imagen de fondo */
+            background-size: cover;
+            background-position: center;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            color: white;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+        }
+
+        .weather-box h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .weather-box p {
+            font-size: 18px;
+        }
+
+        /* Mapa */
+        #map {
+            height: 400px;
+            width: 100%;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        header {
+            
+            font-size: 25px;
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 0.2px 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(255, 255, 255, 0.2);
+        }
+
+        .logo-inside-content {
+        display: block; /* Asegura que la imagen ocupe toda una línea */
+        margin: 0 auto 20px auto; /* Centra la imagen horizontalmente y agrega margen inferior */
+        max-width: 150px; /* Ajusta el tamaño máximo de la imagen */
+        height: auto; /* Mantiene la proporción de la imagen */
+        border-radius: 10px; /* Opcional: Bordes redondeados */
+        font-family: 'SFProDisplay';
+       
+        }
+
+        
+
+
+
+    </style>
+</head>
+<body>
+    
+
+    
+    <nav>
+        <a href="home.html">Inicio</a>
+        <a href="search.html">Búsqueda</a>
+        <a href="paypalindex.html">Productos</a>
+        
+        <a href="javascript:void(0);" class="logout-link" onclick="logout()">Cerrar sesión</a>
+        <a href="javascript:void(0);" class="logout-link" onclick="toggleWeather()">Ver Clima</a>
+    </nav> 
+    
+
+      <main>
+
+        <!-- Recuaadro del clima (oculto por defecto) --><!-- Recuaadro del clima (oculto por defecto) --><!-- Recuaadro del clima (oculto por defecto) --><!-- Recuaadro del clima (oculto por defecto) -->
+      <div id="weather-container" class="weather-container">
+
+      
+        <div id="weather" class="weather-info">
+          <p id="temperature"></p>
+          <p id="weather-description"></p>
+          <p id="humidity"></p>
+        </div>
+      </div>
+          </div>
+          </main>   
+          <!-- Fondo semitransparente (oculto por defecto) -->
+      <div id="overlay" class="overlay" onclick="closeWeather()"></div>
+
+      <!-- Recuaadro del clima (oculto por defecto) -->
+      <div id="weather-container" class="weather-container">
+      
+        <div id="weather" class="weather-info">
+          <p id="temperature"></p>
+          <p id="weather-description"></p>
+          <p id="humidity"></p>
+        </div>
+      </div>
+
+      
+    </main>
+
+    <script>
+      function logout() {
+        fetch('/logout', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(response => {
+          if (response.ok) {
+            window.location.href = 'login.html';
+          } else {
+            alert('Hubo un error al cerrar la sesión');
+          }
+        });
+      }
+
+      function toggleWeather() {
+        const weatherContainer = document.getElementById('weather-container');
+        const overlay = document.getElementById('overlay');
+        
+        // Abrir o cerrar el recuadro de clima
+        weatherContainer.classList.toggle('active');
+        overlay.classList.toggle('active');
+        
+        if (weatherContainer.classList.contains('active')) {
+          requestLocation();
+        }
+      }
+
+      function closeWeather() {
+        const weatherContainer = document.getElementById('weather-container');
+        const overlay = document.getElementById('overlay');
+        
+        weatherContainer.classList.remove('active');
+        overlay.classList.remove('active');
+      }
+
+      function requestLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition, showError);
+        } else {
+          alert("Geolocalización no soportada por este navegador.");
+        }
+      }
+
+      function showPosition(position) {
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+        getWeather(lat, lon);
+      }
+
+      function showError(error) {
+        alert("No se pudo obtener la ubicación. Usaremos una ubicación predeterminada.");
+        getWeather(31.73, -106.48); // Ciudad Juárez
+      }
+
+      function getWeather(lat, lon) {
+        const apiKey = 'f9cea72b1a2f5c523690543b4c201e2b';
+        const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&lang=es`;
+
+        fetch(url)
+          .then(response => response.json())
+          .then(data => {
+            document.getElementById('weather').style.display = 'block';
+            document.getElementById('temperature').textContent = `Temperatura: ${data.main.temp}°C`;
+            document.getElementById('weather-description').textContent = `Descripción: ${data.weather[0].description}`;
+            document.getElementById('humidity').textContent = `Humedad: ${data.main.humidity}%`;
+          })
+          .catch(err => alert("Error al obtener el clima: " + err));
+      }
+    </script>
+
+    <div class="content">
+        <img src="fondo3.png" alt="Logo de SoundBry" class="logo-inside-content">
+        
+        
+        <center>
+
+            <div class="centered-content">
+                <h2>Somos...</h2>
+                <p class="about-text">
+                    SoundBry es una compañía líder mundial en el audio. Nuestros 10 años de experiencia nos respaldan
+                </p>
+                <p class="about-text">
+                    Esta se encuentra en una ubicación muy accesible y reconocida por muchos
+                </p>
+            
+                <h2>Nuestra Ubicación</h2>
+                <p class="about-text">
+                    Ubicada en Blvd. Teófilo Borunda 8682, 32664 Juárez, Chih
+                </p>
+            
+                <h2>Nuestra Ubicación en el Mapa</h2>
+            </div>
+            
+            <div id="map"></div>
+
+
+
+
+
+        </center>
+        
+
+    <script>
+      function initMap() {
+          const companyLocation = { lat: 31.7236, lng: -106.4721 };
+  
+          const map = new google.maps.Map(document.getElementById('map'), {
+              center: companyLocation,
+              zoom: 15,
+              styles: [
+                  {
+                      "elementType": "geometry",
+                      "stylers": [{ "color": "#212121" }]
+                  },
+                  {
+                      "elementType": "labels.text.fill",
+                      "stylers": [{ "color": "#757575" }]
+                  },
+                  {
+                      "elementType": "labels.text.stroke",
+                      "stylers": [{ "color": "#212121" }]
+                  },
+                  {
+                      "featureType": "poi",
+                      "stylers": [{ "visibility": "off" }]
+                  },
+                  {
+                      "featureType": "road",
+                      "elementType": "geometry",
+                      "stylers": [{ "color": "#2c2c2c" }]
+                  },
+                  {
+                      "featureType": "road",
+                      "elementType": "geometry.stroke",
+                      "stylers": [{ "color": "#212121" }]
+                  },
+                  {
+                      "featureType": "road",
+                      "elementType": "labels.text.fill",
+                      "stylers": [{ "color": "#616161" }]
+                  },
+                  {
+                      "featureType": "road.local",
+                      "elementType": "labels.text.fill",
+                      "stylers": [{ "color": "#9e9e9e" }]
+                  },
+                  {
+                      "featureType": "water",
+                      "stylers": [{ "color": "#000000" }]
+                  }
+              ]
+          });
+  
+          const marker = new google.maps.Marker({
+              position: companyLocation,
+              map: map,
+              title: "SoundBry - Nuestra Ubicación"
+          });
+  
+          const infoWindowContent = `
+              <div style="
+                  background-color: #1a1a1a; 
+                  color: #fff; 
+                  padding: 10px; 
+                  border-radius: 8px; 
+                  font-family: Arial, sans-serif;
+                  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);">
+                  <b>SoundBry</b><br>
+                  Blvd. Teófilo Borunda 8682, 32664 Juárez, Chih.
+              </div>
+          `;
+  
+          const infowindow = new google.maps.InfoWindow({
+              content: infoWindowContent
+          });
+  
+          marker.addListener('click', function() {
+              infowindow.open(map, marker);
+          });
+  
+          infowindow.open(map, marker);
+      }
+
+      
+  </script>
+  
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCiMp-o6OdDuW5zEqAjejfjlx1oFHOt420&callback=initMap" async defer></script>
+</body>
+</html>
